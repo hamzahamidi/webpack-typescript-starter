@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { merge } = require('webpack-merge');
 
@@ -11,14 +12,14 @@ const devConfig = require('./webpack.dev');
 
 const resolveApp = relativePath => path.resolve(__dirname, relativePath);
 
-const getPublicPath = (env) => {
+const getPublicPath = () => {
   const homePage = require(resolveApp('package.json')).homepage;
 
-  if (env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === 'development') {
     return '';
   }
-  else if (env.PUBLIC_URL) {
-    return env.PUBLIC_URL;
+  else if (process.env.PUBLIC_URL) {
+    return process.env.PUBLIC_URL;
   }
   else if (homePage) {
     return homePage;
@@ -26,13 +27,12 @@ const getPublicPath = (env) => {
   return '/';
 }
 
-const getEnvVariables = (env) => ({ PUBLIC_URL: getPublicPath(env), VERSION: require(resolveApp('package.json')).version });
+const getEnvVariables = () => ({ PUBLIC_URL: getPublicPath(), VERSION: require(resolveApp('package.json')).version });
 
 
 
-module.exports = function (env) {
-  const isEnvProduction = env.NODE_ENV === 'production';
-  console.log('env.NODE_ENV', env.NODE_ENV);
+module.exports = function () {
+  const isEnvProduction = process.env.NODE_ENV === 'production';
 
   const commonConfig = {
     entry: './src/index.ts',
@@ -41,16 +41,17 @@ module.exports = function (env) {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(env.NODE_ENV || 'development'),
-        'process.env.PUBLIC_URL': JSON.stringify(env.PUBLIC_URL || null),
-      }),
       new CleanWebpackPlugin(),
       new webpack.ProgressPlugin(),
+      new CopyPlugin({
+        patterns: [
+          { from: 'public'},
+        ],
+      }),
       new HtmlWebpackPlugin({
         inject: true,
         template: resolveApp('public/index.html'),
-        ...getEnvVariables(env)
+        ...getEnvVariables()
       }),
       new MiniCssExtractPlugin({ filename: '[name].bundle.css' }),
     ],
@@ -118,5 +119,4 @@ module.exports = function (env) {
 
   if (isEnvProduction) return merge(commonConfig, prodConfig);
   else return merge(commonConfig, devConfig);
-
 }
