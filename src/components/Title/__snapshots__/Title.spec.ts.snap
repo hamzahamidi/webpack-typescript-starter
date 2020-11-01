@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Body Description should render 1`] = `
+"<div class=\\"title__container\\">
+                <h1 class=\\"title__text\\">Webpack typescript starter</h1>
+                <img class=\\"title__logo\\" src=\\"undefined\\" alt=\\"logo\\"></img>
+            </div>"
+`;
