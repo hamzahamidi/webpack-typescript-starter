@@ -41,11 +41,18 @@ module.exports = function () {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      new CleanWebpackPlugin(),
       new webpack.ProgressPlugin(),
+      new CleanWebpackPlugin(),
       new CopyPlugin({
         patterns: [
-          { from: 'public'},
+          {
+            from: 'public',
+            globOptions: {
+              ignore: [
+                '**/index.html'
+              ]
+            }
+          },
         ],
       }),
       new HtmlWebpackPlugin({
