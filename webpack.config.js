@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { merge } = require('webpack-merge');
@@ -104,24 +103,6 @@ module.exports = function () {
     resolve: {
       extensions: ['.tsx', '.ts', '.js']
     },
-
-    optimization: {
-      minimizer: [new TerserPlugin()],
-
-      splitChunks: {
-        cacheGroups: {
-          vendors: {
-            priority: -10,
-            test: /[\\/]node_modules[\\/]/
-          }
-        },
-
-        chunks: 'async',
-        minChunks: 1,
-        minSize: 30000,
-        name: false
-      }
-    }
   }
 
   if (isEnvProduction) return merge(commonConfig, prodConfig);
