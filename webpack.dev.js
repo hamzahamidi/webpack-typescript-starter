@@ -9,4 +9,7 @@ module.exports = {
     port: 4200,
     open: true
   },
+  optimization: {
+    minimize: false
+  }
 };
