@@ -21,28 +21,46 @@ Webpack typescript starter with:
 - Ts-jest
 - Eslint
 
-### [Demo](https://webpack-typescript-starter.netlify.app/)
+## [Demo](https://webpack-typescript-starter.netlify.app/)
 
-# Getting started
+## Getting started
 
-Make sure to have NodeJs already installed:
+Make sure to have NodeJs already installed.
 
-## Install all dependencies.
+### Install all dependencies
 
+```bash
 npm install
+```
 
-## Start developing and serve your app:
+### Start developing and serve your app
 
+```bash
 npm start
+```
 
-## Build your application:
+### Build your application
 
+```bash
 npm run build
+```
 
-## Run unit tests:
+### Run unit tests
 
+```bash
 npm run test
+```
 
-## Run coverage:
+### Run coverage
 
+```bash
 npm run coverage
+```
+
+### Docker
+
+Or simply run the example using docker:
+
+```bash
+docker-compose up
+```
