@@ -24,7 +24,7 @@
     "html-webpack-plugin": "^4.5.0",
     "jest": "^26.6.1",
     "mini-css-extract-plugin": "^1.2.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "sass-loader": "^10.0.4",
     "ts-jest": "^26.4.3",
     "ts-loader": "^8.0.7",
