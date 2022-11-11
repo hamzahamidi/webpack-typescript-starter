@@ -1,6 +1,7 @@
-FROM node:lts AS compile-image
+FROM node:18.12.1 AS build
 
-LABEL name="Webpack starter" \
+
+LABEL name="Webpack typescript starter" \
       description="This image is for webpack typescript starter."
 
 WORKDIR /app
@@ -13,4 +14,4 @@ RUN npm run build
 
 FROM nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf 
-COPY --from=compile-image /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html

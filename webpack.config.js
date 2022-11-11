@@ -9,26 +9,25 @@ const { merge } = require('webpack-merge');
 const prodConfig = require('./webpack.prod');
 const devConfig = require('./webpack.dev');
 
-const resolveApp = relativePath => path.resolve(__dirname, relativePath);
+const resolveApp = (relativePath) => path.resolve(__dirname, relativePath);
 
 const getPublicPath = () => {
   const homePage = require(resolveApp('package.json')).homepage;
 
   if (process.env.NODE_ENV === 'development') {
     return '';
-  }
-  else if (process.env.PUBLIC_URL) {
+  } else if (process.env.PUBLIC_URL) {
     return process.env.PUBLIC_URL;
-  }
-  else if (homePage) {
+  } else if (homePage) {
     return homePage;
   }
   return '/';
-}
+};
 
-const getEnvVariables = () => ({ PUBLIC_URL: getPublicPath(), VERSION: require(resolveApp('package.json')).version });
-
-
+const getEnvVariables = () => ({
+  PUBLIC_URL: getPublicPath(),
+  VERSION: require(resolveApp('package.json')).version,
+});
 
 module.exports = function () {
   const isEnvProduction = process.env.NODE_ENV === 'production';
@@ -37,7 +36,7 @@ module.exports = function () {
     entry: './src/index.ts',
     output: {
       filename: '[name].bundle.js',
-      path: path.resolve(__dirname, 'dist'),
+      clean: true,
     },
     plugins: [
       new webpack.ProgressPlugin(),
@@ -47,17 +46,15 @@ module.exports = function () {
           {
             from: 'public',
             globOptions: {
-              ignore: [
-                '**/index.html'
-              ]
-            }
+              ignore: ['**/index.html'],
+            },
           },
         ],
       }),
       new HtmlWebpackPlugin({
         inject: true,
         template: resolveApp('public/index.html'),
-        ...getEnvVariables()
+        ...getEnvVariables(),
       }),
       new MiniCssExtractPlugin({ filename: '[name].bundle.css' }),
     ],
@@ -66,45 +63,45 @@ module.exports = function () {
       rules: [
         {
           test: /\.(ts|tsx)$/,
-          loader: 'ts-loader',
+          loader: 'swc-loader',
           include: [resolveApp('src')],
-          exclude: [/node_modules/]
+          exclude: [/node_modules/],
         },
         {
           test: /.(scss|css)$/,
 
           use: [
             {
-              loader: MiniCssExtractPlugin.loader
+              loader: MiniCssExtractPlugin.loader,
             },
             {
-              loader: "css-loader",
+              loader: 'css-loader',
 
               options: {
-                sourceMap: true
-              }
+                sourceMap: true,
+              },
             },
             {
-              loader: "sass-loader",
+              loader: 'sass-loader',
 
               options: {
-                sourceMap: true
-              }
-            }]
+                sourceMap: true,
+              },
+            },
+          ],
         },
         {
           test: /\.(png|svg|jpg|gif)$/,
-          use: [
-            'file-loader',
-          ],
-        },]
+          type: 'asset/resource'
+        },
+      ],
     },
 
     resolve: {
-      extensions: ['.tsx', '.ts', '.js']
+      extensions: ['.tsx', '.ts', '.js'],
     },
-  }
+  };
 
   if (isEnvProduction) return merge(commonConfig, prodConfig);
   else return merge(commonConfig, devConfig);
-}
+};

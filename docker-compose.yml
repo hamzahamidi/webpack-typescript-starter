@@ -1,7 +1,6 @@
 version: '3.5' 
 services:
-    front-application:
-      container_name: webpack-starter-container 
+    webpack-typescript-starter:
       build: 
         context: .
         dockerfile: Dockerfile

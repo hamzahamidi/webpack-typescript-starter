@@ -10,15 +10,15 @@
     <a href="https://app.netlify.com/sites/webpack-typescript-starter/deploys">
         <img src="https://api.netlify.com/api/v1/badges/a3caceb4-756f-42ae-913c-96700a2100a2/deploy-status" alt="Build Status">
     </a>
-
 </p>
 
 Webpack typescript starter with:
 
 - Webpack 5
 - Typescript
-- Scss
-- Ts-jest
+- SCSS
+- SWC (Speedy Web Compiler)
+- SWC/jest
 - Eslint
 
 ## [Demo](https://webpack-typescript-starter.netlify.app/)
@@ -38,6 +38,8 @@ npm install
 ```bash
 npm start
 ```
+
+The application will be available at http://localhost:4200
 
 ### Build your application
 
@@ -64,3 +66,5 @@ Or simply run the example using docker:
 ```bash
 docker-compose up
 ```
+
+The application will be available at http://localhost:4000
