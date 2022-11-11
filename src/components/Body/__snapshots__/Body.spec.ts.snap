@@ -4,7 +4,7 @@ exports[`Body Description should render 1`] = `
 "<div class="body__container">
                 <a class="body__fork-project" href="https://github.com/hamzahamidi/webpack-typescript-starter" target="_blank" rel="noopener noreferrer"">
                     Fork project Here
-                    <img class="body__link" src="undefined" alt="github"></img>
+                    <img class="body__link" src="[object Object]" alt="github"></img>
                 </a>
             </div>"
 `;

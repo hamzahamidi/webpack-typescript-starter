@@ -3,6 +3,6 @@
 exports[`Body Description should render 1`] = `
 "<div class="title__container">
                 <h1 class="title__text">Webpack typescript starter</h1>
-                <img class="title__logo" src="undefined" alt="logo"></img>
+                <img class="title__logo" src="[object Object]" alt="logo"></img>
             </div>"
 `;
