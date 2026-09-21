@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { merge } = require('webpack-merge');
 
 const prodConfig = require('./webpack.prod');
@@ -40,7 +39,6 @@ module.exports = function () {
     },
     plugins: [
       new webpack.ProgressPlugin(),
-      new CleanWebpackPlugin(),
       new CopyPlugin({
         patterns: [
           {

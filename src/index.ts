@@ -9,6 +9,10 @@ const renderApp = (root: HTMLElement) => {
 
 }
 
-renderApp(
-  document.getElementById('root')
-);
+const root = document.getElementById('root');
+
+if (!root) {
+  throw new Error('Unable to find the #root element to render into.');
+}
+
+renderApp(root);
