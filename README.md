@@ -18,7 +18,7 @@ Webpack typescript starter with:
 - Typescript
 - SCSS (Dart Sass)
 - SWC (Speedy Web Compiler)
-- SWC/jest
+- Vitest
 - ESLint (flat config)
 
 ## [Demo](https://webpack-typescript-starter.netlify.app/)
@@ -56,7 +56,7 @@ npm run build
 npm run test
 ```
 
-This runs jest in watch mode. For a single run with a coverage report:
+This runs vitest in watch mode. For a single run with a coverage report:
 
 ```bash
 npm run coverage
@@ -69,8 +69,8 @@ npm run lint
 npm run typecheck
 ```
 
-Types are checked by `tsc` only. SWC strips them at build time without checking,
-so run `npm run typecheck` to catch type errors.
+Types are checked by `tsc` only. SWC strips them at build time and vitest strips them
+at test time, neither checking, so run `npm run typecheck` to catch type errors.
 
 ### Docker
 

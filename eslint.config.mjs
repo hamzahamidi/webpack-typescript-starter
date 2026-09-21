@@ -4,7 +4,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['dist', 'coverage', 'jest-config', 'jest.config.js', 'webpack.*.js', 'custom.d.ts'],
+    ignores: ['dist', 'coverage', 'webpack.*.js', 'custom.d.ts'],
   },
   eslint.configs.recommended,
   tseslint.configs.recommended,
@@ -13,12 +13,6 @@ export default tseslint.config(
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: globals.browser,
-    },
-  },
-  {
-    files: ['**/*.spec.ts'],
-    languageOptions: {
-      globals: globals.jest,
     },
   },
 );
