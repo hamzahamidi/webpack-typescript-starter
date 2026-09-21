@@ -17,7 +17,6 @@
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
-    "sourceMap": true,
     "allowJs": true,
     "noEmit": true
   },

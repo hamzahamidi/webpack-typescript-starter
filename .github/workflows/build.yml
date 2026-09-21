@@ -32,7 +32,7 @@ jobs:
     - run: npm run build
     - run: npm run coverage
     - name: Upload coverage to Codecov
-      if: matrix.node-version == '24.x'
+      if: matrix.node-version == '24.x' && github.actor != 'dependabot[bot]'
       uses: codecov/codecov-action@v7
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
