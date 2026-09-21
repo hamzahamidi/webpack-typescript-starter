@@ -25,8 +25,9 @@ Webpack typescript starter with:
 
 ## Getting started
 
-Requires Node.js 22.15 or later. The version used for development and releases
-is in [.nvmrc](.nvmrc).
+Requires Node.js 22.15 or later on an even numbered release line (22, 24, 26).
+Odd numbered lines are excluded because dependencies do not declare support for
+them. The version used for development and releases is in [.nvmrc](.nvmrc).
 
 ### Install all dependencies
 

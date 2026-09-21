@@ -11,7 +11,7 @@
   "author": "Hamza Hamidi",
   "license": "MIT",
   "engines": {
-    "node": ">=22.15.0"
+    "node": "^22.15.0 || ^24.0.0 || >=26.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

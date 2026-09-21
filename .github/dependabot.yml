@@ -10,6 +10,12 @@ updates:
       dev-dependencies:
         patterns:
           - '*'
+    ignore:
+      # typescript-eslint peers typescript at <6.1, so a major bump here breaks
+      # the lint step. Raise this once typescript-eslint supports TypeScript 7.
+      - dependency-name: typescript
+        update-types:
+          - version-update:semver-major
   - package-ecosystem: github-actions
     directory: /
     schedule:
