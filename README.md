@@ -16,16 +16,17 @@ Webpack typescript starter with:
 
 - Webpack 5
 - Typescript
-- SCSS
+- SCSS (Dart Sass)
 - SWC (Speedy Web Compiler)
 - SWC/jest
-- Eslint
+- ESLint (flat config)
 
 ## [Demo](https://webpack-typescript-starter.netlify.app/)
 
 ## Getting started
 
-Make sure to have NodeJs already installed.
+Requires Node.js 22.15 or later. The version used for development and releases
+is in [.nvmrc](.nvmrc).
 
 ### Install all dependencies
 
@@ -39,7 +40,8 @@ npm install
 npm start
 ```
 
-The application will be available at http://localhost:4200
+The application will be available at http://localhost:4200 with hot module
+replacement enabled.
 
 ### Build your application
 
@@ -53,18 +55,28 @@ npm run build
 npm run test
 ```
 
-### Run coverage
+This runs jest in watch mode. For a single run with a coverage report:
 
 ```bash
 npm run coverage
 ```
+
+### Lint and type-check
+
+```bash
+npm run lint
+npm run typecheck
+```
+
+Types are checked by `tsc` only. SWC strips them at build time without checking,
+so run `npm run typecheck` to catch type errors.
 
 ### Docker
 
 Or simply run the example using docker:
 
 ```bash
-docker-compose up
+docker compose up
 ```
 
 The application will be available at http://localhost:4000

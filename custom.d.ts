@@ -15,3 +15,6 @@ declare module "*.gif" {
     const content: any;
     export default content;
 }
+// Definition modules for importing style sheets
+declare module "*.scss";
+declare module "*.css";
