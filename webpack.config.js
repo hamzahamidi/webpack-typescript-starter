@@ -10,15 +10,17 @@ const devConfig = require('./webpack.dev');
 
 const resolveApp = (relativePath) => path.resolve(__dirname, relativePath);
 
+const withTrailingSlash = (url) => url.replace(/\/*$/, '/');
+
 const getPublicPath = () => {
   const homePage = require(resolveApp('package.json')).homepage;
 
   if (process.env.NODE_ENV === 'development') {
-    return '';
+    return '/';
   } else if (process.env.PUBLIC_URL) {
-    return process.env.PUBLIC_URL;
+    return withTrailingSlash(process.env.PUBLIC_URL);
   } else if (homePage) {
-    return homePage;
+    return withTrailingSlash(homePage);
   }
   return '/';
 };
