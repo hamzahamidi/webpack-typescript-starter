@@ -28,6 +28,8 @@ jobs:
 
     - run: npm ci
     - run: npm run build
+      env:
+        PUBLIC_URL: /${{ github.event.repository.name }}
 
     - name: deploy
       uses: peaceiris/actions-gh-pages@v4
